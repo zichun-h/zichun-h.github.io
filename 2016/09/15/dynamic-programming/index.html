@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>赛码网-动态规划题解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="动态规划思想和常见例子。">
+<meta name="keywords" content="编程题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="赛码网-动态规划题解">
+<meta property="og:url" content="http://yoursite.com/2016/09/15/dynamic-programming/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="动态规划思想和常见例子。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-09-15T11:04:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="赛码网-动态规划题解">
+<meta name="twitter:description" content="动态规划思想和常见例子。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-dynamic-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/15/dynamic-programming/" class="article-date">
+  <time datetime="2016-09-15T09:10:37.000Z" itemprop="datePublished">2016-09-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      赛码网-动态规划题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>将待求解的问题分解为若干个子问题（阶段），按顺序求解子阶段，前一子问题的解，为后一子问题的求解提供了有用的信息。<br>动态规划问题的特点：多数情况下子问题会重叠计算，为减少重复计算，对每一个子问题只解一次，并保存到二维数组中。<br>与分治算法的区别在于：分治算法分解后得到的子问题往往是互相独立的。</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li>确定状态：状态只与之前状态有关，且不能与之前的状态无关；分解后得到的子问题往往不是互相独立的</li>
+<li>确定状态转移方程：问题的结果可能不是单纯状态的值，而是要遍历所有状态才得到；</li>
+<li>确定边界条件</li>
+</ol>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="1-上台阶"><a href="#1-上台阶" class="headerlink" title="1. 上台阶"></a>1. 上台阶</h3><blockquote>
+<p>有一楼梯共m级，刚开始时你在第一级，若每次只能跨上一级或二级，要走上第m级，共有多少走法？<br>注：规定从一级到一级有0种走法。</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<p><strong>样例输入:</strong><br><em>输入数据首先包含一个整数n(1&lt;=n&lt;=100)，表示测试实例的个数，然后是n行数据，每行包含一个整数m，（1&lt;=m&lt;=40), 表示楼梯的级数。</em><br>2<br>2<br>3<br><strong>样例输出：</strong><br><em>对于每个测试实例，请输出不同走法的数量。</em><br>1<br>2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// m级楼梯有多少种走法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getMethon_MStair</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(m &lt;= <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(m == <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> getMethon_MStair(m - <span class="number">1</span>) + getMethon_MStair(m - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num_test;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; num_test;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num_test; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> num_step;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; num_step;</span><br><span class="line">		<span class="keyword">int</span> ret_val = getMethon_MStair(num_step);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"o:"</span> &lt;&lt; ret_val &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-击鼓传花"><a href="#2-击鼓传花" class="headerlink" title="2. 击鼓传花"></a>2. 击鼓传花</h3><blockquote>
+</blockquote>
+<p>学校联欢晚会的时候，为了使每一个同学都能参与进来，主持人常常会带着同学们玩击鼓传花的游戏。游戏规则是这样的：n个同学坐着围成一个圆圈，指定一个同学手里拿着一束花，主持人在旁边背对着大家开始击鼓，鼓声开始之后拿着花的同学开始传花，每个同学都可以把花传给自己左右的两个同学中的一个（左右任意），当主持人停止击鼓时，传花停止，此时，正拿着花没传出去的那个同学就要给大家表演一个节目。<br>聪明的小赛提出一个有趣的问题：有多少种不同的方法可以使得从小赛手里开始传的花，传了m次以后，又回到小赛手里。对于传递的方法当且仅当这两种方法中，接到花的同学按接球顺序组成的序列是不同的，才视作两种传花的方法不同。比如有3个同学1号、2号、3号，并假设小赛为1号，花传了3次回到小赛手里的方式有1-&gt;2-&gt;3-&gt;1和1-&gt;3-&gt;2-&gt;1，共2种。</p>
+<blockquote>
+</blockquote>
+<p><strong>样例输入:</strong><br><em>输入共一行，有两个用空格隔开的整数n，m（3&lt;=n&lt;=30，1&lt;=m&lt;=30）</em><br>3 3<br><strong>样例输出：</strong><br><em>输出共一行，有一个整数，表示符合题意的方法数</em><br>2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化：创建二维数组status[m][n]，初始化status[0][0]=0, status[0][1]=1, status[0][n-1]=1, ... =0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 状态的确定：status[x][y]</span></span><br><span class="line"><span class="comment">// 假设小赛是第0个同学，旁边则为第1个和第n-1个，设状态为status[x][y]：x+1次传花后以第y位同学结束的序列有多少种</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 状态转移方程：</span></span><br><span class="line"><span class="comment">// status[x][y] = status[x-1][(y+1)%n] + status[x-1][(y+n-1)%n]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果为status[m-1][0]</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; status(m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">0</span>));</span><br><span class="line">	status[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	status[<span class="number">0</span>][n<span class="number">-1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			status[i][j] = status[i<span class="number">-1</span>][(j+<span class="number">1</span>)%n] + status[i<span class="number">-1</span>][(j+n<span class="number">-1</span>)%n];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; status[m<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-军训队列"><a href="#3-军训队列" class="headerlink" title="3. 军训队列"></a>3. 军训队列</h3><blockquote>
+</blockquote>
+<p>某大学开学进行军训队列训练，将学生从一开始按顺序依次编号，并排成一行横队，训练的规则如下：从头开始一至二报数，凡报到二的出列剩下的依次向前靠拢，再从头开始进行一至三报数，凡报到三的出列，剩下的依次向前靠拢，继续从头开始进行一至二报数。。。以后每次从头开始轮流进行一至二报数、一至三报数直到剩下的人数不超过三人为止。</p>
+<blockquote>
+</blockquote>
+<p><strong>样例输入:</strong><br><em>第一行为组数N，接着为N行学生人数，学生人数不超过5000。</em><br>2<br>20<br>40<br><strong>样例输出：</strong><br><em>输出有N行，分别对应输入的学生人数，每行输出剩下的学生最初的编号，编号之间有一个空格。</em><br>1 7 19<br>1 19 37</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; selectStu(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; stu, <span class="keyword">int</span> step)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret;</span><br><span class="line">	<span class="keyword">if</span>(stu.size() &lt;= <span class="number">3</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> stu;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stu.size(); i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="keyword">if</span> ((i + <span class="number">1</span>) % step != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			ret.push_back(stu[i]);</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> selectStu(ret, step == <span class="number">2</span> ? <span class="number">3</span> : <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> group;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; group;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; group; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> num_stu;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; num_stu;</span><br><span class="line">		<span class="comment">// 初始化</span></span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; stu(num_stu, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j&lt; num_stu; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			stu[j] = j + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret;</span><br><span class="line">		ret = selectStu(stu, <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ret.size(); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; ret[j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/15/dynamic-programming/" data-id="cjflcel2m00021x15nbthgfei" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/24/combination-sum/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          网易笔试题-组合和
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/10/markdown-usage/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Markdown用法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/编程题/" style="font-size: 10px;">编程题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/29/ubuntu-nginx-php-mysql/">nginx，php和mysql安装</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/24/combination-sum/">网易笔试题-组合和</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/15/dynamic-programming/">赛码网-动态规划题解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/10/markdown-usage/">Markdown用法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/10/sublime-text2-usage/">Sublime Text2 支持 Markdown 编辑</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 hzc<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

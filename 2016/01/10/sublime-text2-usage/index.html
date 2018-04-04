@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Sublime Text2 支持 Markdown 编辑 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何使用 Sublime Text2 安装中文扩展包，Markdown Editing 和 Markdown Preview插件。">
+<meta name="keywords" content="工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime Text2 支持 Markdown 编辑">
+<meta property="og:url" content="http://yoursite.com/2016/01/10/sublime-text2-usage/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何使用 Sublime Text2 安装中文扩展包，Markdown Editing 和 Markdown Preview插件。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-09-15T10:43:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sublime Text2 支持 Markdown 编辑">
+<meta name="twitter:description" content="如何使用 Sublime Text2 安装中文扩展包，Markdown Editing 和 Markdown Preview插件。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sublime-text2-usage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/10/sublime-text2-usage/" class="article-date">
+  <time datetime="2016-01-10T11:10:07.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sublime Text2 支持 Markdown 编辑
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="Sublime-Text2-使用记录"><a href="#Sublime-Text2-使用记录" class="headerlink" title="Sublime Text2 使用记录"></a>Sublime Text2 使用记录</h1><h2 id="安装-Package-Control"><a href="#安装-Package-Control" class="headerlink" title="安装 Package Control"></a>安装 Package Control</h2><p>按下组合键 Control + ` ，出现控制台，输入</p>
+<pre><code>import urllib2,os; pf=&apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), &apos;wb&apos; ).write( urllib2.urlopen( &apos;http://sublime.wbond.net/&apos; +pf.replace( &apos; &apos;,&apos;%20&apos; )).read()); print( &apos;Please restart Sublime Text to finish installation&apos;)
+</code></pre><p>当看到代码最后一行提示的时候说明安装成功，此时重启 Sublime Text2，可在 Preferences -&gt; Package Settings 看到 Package Control 。</p>
+<h2 id="安装中文扩展包"><a href="#安装中文扩展包" class="headerlink" title="安装中文扩展包"></a>安装中文扩展包</h2><p>按下键 Ctrl+Shift+p 调出命令面板，找到 Package Control: install Pakage 这一项。搜索 ConvertToUTF8 ，点击安装，安装完成后重启， GBK 编码格式下的中文就不会乱码了。</p>
+<h2 id="安装-Markdown-Editing-和-Markdown-Preview-插件"><a href="#安装-Markdown-Editing-和-Markdown-Preview-插件" class="headerlink" title="安装 Markdown Editing 和 Markdown Preview 插件"></a>安装 Markdown Editing 和 Markdown Preview 插件</h2><p>按下键 Ctrl+Shift+p 调出命令面板，找到 Package Control: install Pakage 这一项。搜索 markdown preview ，点击安装；安装完成后再搜索 markdownediting ，点击安装。都安装完成后重新启动 Sublime Text2 。</p>
+<h2 id="设置快捷键"><a href="#设置快捷键" class="headerlink" title="设置快捷键"></a>设置快捷键</h2><p>在 Preferences -&gt; Key Bindings User 打开的文件的中括号中添加以下代码(可在 Key Bindings Default 找到格式)：</p>
+<pre><code>{ &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: { &quot;target&quot;: &quot;browser&quot;} }
+</code></pre><p>“alt+m” 即为Markdown Preview的快捷键。</p>
+<h2 id="设置语法高亮和mathjax支持"><a href="#设置语法高亮和mathjax支持" class="headerlink" title="设置语法高亮和mathjax支持"></a>设置语法高亮和mathjax支持</h2><p>在 Preferences -&gt; Package Settings -&gt; Markdown Preview -&gt; Setting Default 中的第47行和57行找到如下两段，将两个 false 改为 true 即可。</p>
+<pre><code> /*
+    Enable or not mathjax support.
+*/
+&quot;enable_mathjax&quot;: false,
+
+/*
+    Enable highlighting. This enables codehilite extension if not already enabled.
+*/
+&quot;enable_highlight&quot;: false,
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/10/sublime-text2-usage/" data-id="cjflcel2w00091x15aobxw7fd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/10/markdown-usage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Markdown用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/05/how-to-use-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo建立个人博客-Ubuntu</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/编程题/" style="font-size: 10px;">编程题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/29/ubuntu-nginx-php-mysql/">nginx，php和mysql安装</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/24/combination-sum/">网易笔试题-组合和</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/15/dynamic-programming/">赛码网-动态规划题解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/10/markdown-usage/">Markdown用法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/10/sublime-text2-usage/">Sublime Text2 支持 Markdown 编辑</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 hzc<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
